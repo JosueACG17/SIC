@@ -41,7 +41,3 @@ Route::post('/alumnos', [StudentController::class, 'store']);
 Route::resource('estudiantes', StudentController::class);
 
 Route::resource('tabla', StudentController::class);
-
-
-Route::get('/home', function (){
-})->middleware('auth');
