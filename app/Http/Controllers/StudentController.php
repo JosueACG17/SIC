@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Http\Requests\StudentRequest;
@@ -15,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
+        $students = Student::paginate(5);
         return view('tablausuarios', compact('students'));
 
     }
@@ -36,8 +37,21 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StudentRequest $require){
-        return view('home');
+    
+    public function store(StudentRequest $request)
+    {
+        $data = $request->validated();
+        
+        $student = new Student();
+        $student->name_student = $data['nombre'];
+        $student->lastname_student = $data['apellidos'];
+        $student->id_student = $data['matricula'];
+        $student->birthday = $data['cumpleanios'];
+        $student->email= $data['correo'];
+        $student->contrasenia = $data['contraseña']; 
+        $student->save();
+        
+        return redirect('/students');
     }
 
     /**
@@ -48,7 +62,9 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        //CONSULTA ELOQUET
+        $student = Student::find($id);
+        return view('show-student', compact('student'));
     }
 
     /**
@@ -59,7 +75,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student= Student::find($id);
+        return view('edit-student', compact('student'));
     }
 
     /**
@@ -69,10 +86,15 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function update(StudentRequest $request, $id): RedirectResponse
+{
+    $student = Student::find($id);
+    $student->update($request->all());
+
+    return redirect()->route('students.index')->with('notificacion', $student->name_student . ' ha sido modificado correctamente');
+
+}
+
 
     /**
      * Remove the specified resource from storage.

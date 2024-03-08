@@ -24,10 +24,12 @@ class StudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'bail|required|alpha',
-            'matricula' => 'bail|required|numeric',
-            'correo' => 'bail|required|email',
-            'contraseña' => 'bail|required|between:4,10'
+            'name_student'=>'bail',
+            //'apellidos'=>'bail|required|alpha',
+            //'matricula' => 'bail|required|numeric',
+            //'cumpleanios'=>'bail|required|date',
+            //'correo' => 'bail|required|email',
+            //'contraseña' => 'bail|required|between:4,10'
         ];
     }
 }

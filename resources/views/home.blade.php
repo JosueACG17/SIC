@@ -22,7 +22,7 @@ Datos Generales
             </div>
         </div>
         <div>
-            <a href="estudiantes"
+            <a href="tablausuarios"
                 class="h-full py-6 px-6 rounded-xl border-2 text-center border-gray-200 bg-white hover:bg-green-400 flex flex-col justify-center items-center">
                 <h5 class="text-3xl font-bold text-gray-700">Estudiantes</h5>
                 <img class="h-28 w-28 mt-4"
