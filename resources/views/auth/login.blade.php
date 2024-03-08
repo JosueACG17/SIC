@@ -1,7 +1,7 @@
 @vite('resources/css/app.css')
 @extends('plantilla')
 @section('titulo')
-    Agregar Estudiante
+    Login
 @endsection
 @section('contenido')
 
@@ -9,9 +9,9 @@
         <section class="min-h-screen flex items-stretch text-white ">
             <div class="lg:flex w-full bg-white md:bg-white bg-no-repeat bg-cover relative items-center"
                 style="background-image: url(http://www.utcancun.edu.mx/wp-content/uploads/2016/07/e75f02ac-c4da-4162-a1a7-5e8ef604e830.jpg);">
-                <div class="absolute bg-black opacity-50 inset-0 z-0"></div>
+                <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
                 <div class="w-full px-24 z-10">
-                    <h1 class="text-5xl font-bold text-center tracking-wide">Sistema Integral de Calificaciones</h1>
+                    <h1 class="text-5xl font-bold mt-8 md:mt-0 text-center tracking-wide">Sistema Integral de Calificaciones</h1>
                 </div>
                 <div class="w-full py-6 z-30">
                     <div class="mx-auto max-w-lg rounded-lg">
@@ -54,7 +54,7 @@
                                     No tienes cuenta? Registrate
                                 </a>
 
-                                <x-primary-button class="ml-3">
+                                <x-primary-button class="ml-3 bg-cyan-900 ">
                                     {{ __('Log in') }}
                                 </x-primary-button>
                             </div>
